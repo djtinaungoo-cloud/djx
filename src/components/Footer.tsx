@@ -29,7 +29,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t border-white/[0.04] text-center text-xs text-gray-600">
-          © {new Date().getFullYear()} DJX. All rights reserved. The frequency is the message.
+          © {new Date().getFullYear()} DJX. All rights reserved. 
+          The ENERGY is the MUSIC.
         </div>
       </div>
     </footer>
