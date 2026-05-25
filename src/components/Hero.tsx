@@ -87,7 +87,7 @@ export default function Hero({ featuredMix }: { featuredMix: Mix | null }) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-medium"
         >
-          Immerse yourself in the world of electronic music. Stream exclusive DJ sets, discover new artists, and feel the beat.
+          Immerse yourself in the world of electronic music. Feel the energy of the best Trance trqcks.
         </motion.p>
 
         <motion.div
@@ -102,7 +102,7 @@ export default function Hero({ featuredMix }: { featuredMix: Mix | null }) {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Play size={20} fill="white" />
-              Play Featured Mix
+              PLAY Featured Mix
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-fuchsia-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
