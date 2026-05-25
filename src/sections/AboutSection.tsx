@@ -31,14 +31,17 @@ export default function AboutSection() {
                   alt="DJX"
                   className="h-16 w-auto mb-6 drop-shadow-[0_0_20px_rgba(168,85,247,0.3)]"
                 />
-                <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                  DJX was born from the underground — a collective of DJs, producers, and electronic music lovers united by one mission: to bring the raw energy of the club to the digital world.
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  DJX, also known as Tin Aung Oo, is a highly skilled and experienced Trance DJ from Myanmar. With a love for music that dates back to the days of turntables, DJX has honed his craft over the years and has become a well-respected figure in the music industry.
                 </p>
                 <p className="text-gray-400 leading-relaxed mb-6">
-                  We curate the finest mix sets from techno to trance, deep house to drum & bass. Every set is a journey, every beat is intentional, and every listener is part of the movement.
+                  With his mastery of different music styles and mixing techniques, DJX has proven himself to be a versatile DJ. However, it is in the realm of electronic music, particularly trance, where he has truly found his calling. His passion for the genre shines through in his sets, which are filled with uplifting beats and soulful melodies that get crowds moving.
                 </p>
                 <p className="text-gray-400 leading-relaxed">
-                  From intimate warehouse sessions to massive festival recordings, DJX is your portal to the world's best electronic music — streaming 24/7, no compromises.
+                  As a testament to his commitment to the trance genre, DJX also hosts a popular trance podcast on Apple Podcasts. The podcast showcases his mixing style and features some of the best and most uplifting trance tracks from around the world.
+                </p>
+                <p className="text-gray-400 leading-relaxed">
+                  Overall, DJX is a highly talented and accomplished trance DJ who has made a significant impact on the music industry in Myanmar and beyond. His passion for music and dedication to his craft make him a true standout in the world of electronic music.
                 </p>
               </div>
             </div>
