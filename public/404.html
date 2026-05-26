@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJX — Feel The Frequency</title>
+  <script>
+    // SPA redirect for GitHub Pages
+    // When someone visits a sub-path directly (e.g. /djx/#mixes),
+    // GitHub Pages serves this 404.html. We redirect to the root
+    // and restore the path via sessionStorage.
+    sessionStorage.redirect = window.location.href;
+
+    // 🚨 IMPORTANT: Change this to match your repo path!
+    // If your repo is github.com/YOUR_USERNAME/djx → use '/djx/'
+    // If using a custom domain → use '/'
+    var basePath = '/';
+
+    window.location.replace(window.location.origin + basePath);
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
