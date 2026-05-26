@@ -26,7 +26,7 @@ export default defineConfig(async () => {
   // You can also set this via the VITE_BASE_PATH env var:
   //   VITE_BASE_PATH=/djx/ npm run build
   // ──────────────────────────────────────────────────────────
-  const base = process.env.VITE_BASE_PATH || '/';
+  const base = process.env.VITE_BASE_PATH || '/djx/';
 
   return {
     plugins,
