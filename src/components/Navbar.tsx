@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Mixes', href: '#mixes' },
   { label: 'Playlists', href: '#playlists' },
-  { label: 'Artists', href: '#artists' },
+  { label: 'Podcasts', href: '#podcasts' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
