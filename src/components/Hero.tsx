@@ -78,7 +78,7 @@ export default function Hero({ featuredMix }: { featuredMix: Mix | null }) {
           </span>
           <br />
           <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-fuchsia-500 bg-clip-text text-transparent">
-            FREQUENCY
+            ENERGY
           </span>
         </motion.h1>
 
@@ -88,7 +88,7 @@ export default function Hero({ featuredMix }: { featuredMix: Mix | null }) {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-medium"
         >
-          Immerse yourself in the world of electronic music. Stream exclusive DJ sets, discover new artists, and feel the beat.
+          Immerse yourself in the world of Trance and Electronic music. Stream exclusive DJ sets. Feel the Energy, Vibe, and Emotions.
         </motion.p>
 
         <motion.div
