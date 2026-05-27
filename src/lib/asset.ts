@@ -8,7 +8,7 @@
  *   - https://djx.yourdomain.com/         (base: '/')
  */
 export function asset(path: string): string {
-  const base = import.meta.env.BASE_URL || '/';
+  const base = import.meta.env.BASE_URL || '/djx/';
   // Remove leading slash from path, ensure base has trailing slash
   const cleanPath = path.replace(/^\/+/, '');
   return `${base}${cleanPath}`;
