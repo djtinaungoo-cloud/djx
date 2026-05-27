@@ -19,7 +19,7 @@ export default function Footer() {
             <a href="#home" className="hover:text-white transition-colors">Home</a>
             <a href="#mixes" className="hover:text-white transition-colors">Mixes</a>
             <a href="#playlists" className="hover:text-white transition-colors">Playlists</a>
-            <a href="#artists" className="hover:text-white transition-colors">Artists</a>
+            <a href="#podcasts" className="hover:text-white transition-colors">Artists</a>
             <a href="#contact" className="hover:text-white transition-colors">Contact</a>
           </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t border-white/[0.04] text-center text-xs text-gray-600">
-          © {new Date().getFullYear()} DJX. All rights reserved. The frequency is the message.
+          © {new Date().getFullYear()} DJX. All rights reserved. The ENERGY is the music!
         </div>
       </div>
     </footer>
