@@ -1,1 +1,2 @@
-/// <reference types="vite/client" /> declare module '#types/hot';
+/// <reference types="vite/client" />
+declare module '#types/hot';
