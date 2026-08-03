@@ -1,0 +1,35 @@
+name: Monitor Pages workflow failures
+
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+
+permissions:
+  issues: write
+  contents: read
+  actions: read
+
+jobs:
+  notify-on-failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create an issue for failed Pages run
+        uses: peter-evans/create-issue@v4
+        with:
+          title: "[CI] Pages workflow failed — ${{ github.event.workflow_run.head_branch }}@${{ github.event.workflow_run.head_sha }}"
+          body: |
+            The "pages build and deployment" workflow failed.
+
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.event.workflow_run.head_branch }}
+            Commit: ${{ github.event.workflow_run.head_sha }}
+            Commit message: ${{ github.event.workflow_run.head_commit.message }}
+
+            Run details: ${{ github.event.workflow_run.html_url }}
+
+            Please investigate the failing job(s) and re-run the workflow after fixing.
+
+            (automatically created by monitor-pages workflow)
+          labels: ci, pages, automated
