@@ -1,0 +1,1 @@
+Trigger Pages run after adding tsconfig.node.json
