@@ -1,0 +1,76 @@
+# Consolidated Pages workflow: only manual (workflow_dispatch) to avoid duplicate/racing deployments.
+# Use the built-in Pages "pages build and deployment" workflow for push-triggered deployments.
+name: Consolidated GitHub Pages — Build and Deploy (manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Debug - list dist
+        run: |
+          echo "pwd: $(pwd)"
+          if [ -d "./dist" ]; then
+            echo "dist exists, listing contents:";
+            ls -la ./dist || true
+          else
+            echo "dist directory missing";
+            ls -la || true
+            exit 1
+          fi
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Pages artifact (poll and dump artifacts response)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          retries=24
+          while [ $retries -gt 0 ]; do
+            resp=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
+            echo "Artifacts API response:" >&2
+            echo "$resp" >&2
+            count=$(echo "$resp" | sed -n 's/.*"total_count"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p' || true)
+            if [ -n "$count" ] && [ "$count" -gt 0 ]; then
+              echo "Found $count artifact(s)."
+              break
+            fi
+            echo "Artifacts not ready yet; waiting 5s... ($retries retries left)"
+            sleep 5
+            retries=$((retries-1))
+          done
+          if [ -z "$count" ] || [ "$count" -eq 0 ]; then
+            echo "No artifacts found after waiting; aborting deploy."
+            exit 1
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
