@@ -4,7 +4,7 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https:[...]
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## React Compiler
@@ -43,7 +43,7 @@ export default defineConfig([
 ])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint[...]
 
 ```js
 // eslint.config.js
@@ -71,3 +71,21 @@ export default defineConfig([
   },
 ])
 ```
+
+---
+
+## GitHub Pages workflow (important)
+
+- The previous consolidated push-triggered Pages workflow has been archived and moved to:
+  - `.github/workflows/pages.disabled.yml` (kept for history)
+- A placeholder workflow remains at `.github/workflows/pages.yml` to prevent accidental push-triggered deployments.
+
+Use the built-in, dynamic workflow to build and deploy Pages instead:
+- In the GitHub UI: Actions → "pages build and deployment" → Run workflow → choose `main` and Run workflow.
+
+Notes about the build
+- The build runs `tsc -b && vite build`. To support this, the repository includes:
+  - `tsconfig.node.json` — a small config used by the `tsc -b` step.
+  - `env.d.ts` — declares Vite virtual modules (e.g. `#types/hot`) so TypeScript can resolve them.
+
+If you need me to revert these changes or further tidy the CI files (remove the archived file entirely, add a short changelog entry, etc.), tell me what you want and I'll apply it.
