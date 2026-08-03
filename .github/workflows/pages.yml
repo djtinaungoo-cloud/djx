@@ -40,5 +40,28 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for Pages artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Poll the Actions API for artifacts for this run; give upload some time to register
+          retries=24
+          count=0
+          while [ $retries -gt 0 ]; do
+            resp=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts")
+            count=$(echo "$resp" | sed -n 's/.*"total_count"[[:space:]]*:[[:space:]]*\([0-9]*\).*/\1/p')
+            if [ -n "$count" ] && [ "$count" -gt 0 ]; then
+              echo "Found $count artifact(s)."
+              break
+            fi
+            echo "Artifacts not ready yet; waiting 5s... ($retries retries left)"
+            sleep 5
+            retries=$((retries-1))
+          done
+          if [ -z "$count" ] || [ "$count" -eq 0 ]; then
+            echo "No artifacts found after waiting; aborting deploy."
+            exit 1
+          fi
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
