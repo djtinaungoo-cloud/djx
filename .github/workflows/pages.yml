@@ -1,9 +1,6 @@
-name: Consolidated GitHub Pages — Build and Deploy
+name: Consolidated GitHub Pages — Build and Deploy (manual)
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
